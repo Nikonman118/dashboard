@@ -3,24 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>Coming Soon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1e40af;
+            --card-bg: #f8fafc;
+            --button-bg: #1e40af;
+            --button-text: #ffffff;
+        }
+
+        body.dark {
+            --bg-color: #0f172a;
+            --text-color: #60a5fa;
+            --card-bg: #020617;
+            --button-bg: #e5e7eb;
+            --button-text: #020617;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
+            background: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 60px 80px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            animation: fadeIn 1.2s ease;
         }
 
         h1 {
-            color: blue;
-            font-size: 48px;
+            font-size: 3.5rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        button {
+            border: none;
+            padding: 12px 26px;
+            font-size: 1rem;
+            border-radius: 999px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Coming Soon</h1>
+    <div class="card">
+        <h1>Coming Soon</h1>
+        <p>Something awesome is on the way 🚀</p>
+        <button id="toggleTheme">Dark / Light</button>
+    </div>
+
+    <script>
+        const button = document.getElementById("toggleTheme");
+        button.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+        });
+    </script>
 </body>
 </html>
